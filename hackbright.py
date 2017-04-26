@@ -98,6 +98,55 @@ def get_all_grades_by_github(github):
     return db_cursor.fetchall()
 
 
+def get_all_students():
+    """Print all students in database."""
+
+    QUERY = """
+    SELECT first_name, last_name, github
+    FROM students
+    """
+    db_cursor = db.session.execute(QUERY)
+
+    # for row in db_cursor:
+    #     print "Grade for %s is %s" % (row[0], row[1])
+
+    return db_cursor.fetchall()
+
+
+def get_all_projects():
+    """Print all projects in database."""
+
+    QUERY = """
+    SELECT title
+    FROM projects
+    """
+    db_cursor = db.session.execute(QUERY)
+
+    # for row in db_cursor:
+    #     print "Grade for %s is %s" % (row[0], row[1])
+
+    return db_cursor.fetchall()
+
+def get_grades_by_title(title):
+    """Get a list of all student grades for a project by its title"""
+
+    QUERY = """
+        SELECT student_github, grade
+        FROM Grades
+        WHERE project_title = :title
+        """
+
+    db_cursor = db.session.execute(QUERY, {'title': title})
+
+    rows = db_cursor.fetchall()
+
+    # for row in rows:
+    #     print "Student {acct} received grade of {grade} for {title}".format(
+    #         acct=row[0], grade=row[1], title=title)
+
+    return rows
+
+
 def assign_grade(github, title, grade):
     """Assign a student a grade on an assignment and print a confirmation."""
     QUERY = """

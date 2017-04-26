@@ -1,33 +1,43 @@
-CREATE TABLE students (
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
-    github VARCHAR(30)
-    );
+--
+-- PostgreSQL database dump
+--
 
-INSERT INTO students VALUES('Jane','Hacker','jhacks');
-INSERT INTO students VALUES('Sarah','Developer','sdevelops');
+-- Dumped from database version 9.5.6
+-- Dumped by pg_dump version 9.5.6
 
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
 
-CREATE TABLE projects (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(30),
-    description TEXT,
-    max_grade INTEGER
-    );
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
 
-INSERT INTO projects VALUES(1,'Markov','Tweets generated from Markov chains',50);
-INSERT INTO projects VALUES(2,'Blockly','Programmatic Logic Puzzle Game',10);
-
-SELECT setval('projects_id_seq', 2, True);
-
-CREATE TABLE grades (
-    student_github VARCHAR(30),
-    project_title VARCHAR(30),
-    grade INTEGER
-    );
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
-INSERT INTO grades VALUES('jhacks','Markov',10);
-INSERT INTO grades VALUES('jhacks','Blockly',2);
-INSERT INTO grades VALUES('sdevelops','Markov',50);
-INSERT INTO grades VALUES('sdevelops','Blockly',100);
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
