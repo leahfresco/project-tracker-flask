@@ -10,11 +10,15 @@
     {% endfor %}
   </ul>
 
+  <a href="/student-add">Add NEW student! </a>
+
   <h2>Projects</h2><ul>
     {% for project in projects %}
     <li><a href="/project?project_title={{ project[0] }}">{{ project[0] }}</a></li>
     {% endfor %}
   </ul>
+
+  <a href="/project-add">Add NEW project! </a>
 
 </body>
 </html>

@@ -68,7 +68,6 @@ def student_add():
     """Form to add a student."""
     return render_template("student_add.html")
 
-
 @app.route("/student-add-success", methods=['POST'])
 def student_add_success():
     """Add a student."""
@@ -79,6 +78,26 @@ def student_add_success():
     hackbright.make_new_student(first_name, last_name, github)
     return render_template("student_add_success.html",
                            github=github)
+
+@app.route("/project-add")
+def project_add():
+    """Form to add a project."""
+    return render_template("project_add.html")
+
+
+@app.route("/project-add-success", methods=['POST'])
+def project_add_success():
+    """Add a project."""
+    project_title = request.form.get("project_title")
+    project_description = request.form.get("project_description")
+    max_grade = request.form.get("max_grade")
+
+    hackbright.create_project(project_title, project_description, max_grade)
+    return render_template("project_add_success.html",
+                           project_title=project_title)
+
+
+
 
 
 if __name__ == "__main__":
